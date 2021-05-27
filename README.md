@@ -1,1 +1,3 @@
-# RESFOR_Shiny
+# RESFOR_Shiny App
+
+Selection tool
