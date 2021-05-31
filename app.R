@@ -168,63 +168,63 @@ ui<-fluidPage(
                           )
                         )
                       )
-                      
+
              ),
-             
+
              tabPanel("Environment",
                       titlePanel("Environment Information"),
-                      
+
                       # Sidebar layout with input and output definitions ----
                       sidebarLayout(
-                        
+
                         # Sidebar panel for inputs ----
                         sidebarPanel(
-                          
+
                           selectInput("input_species_environment", "Species",
                                       c("White Spruce","Lodgepole Pine")
                           ),
-                          
+
                           #Climate date range
                           uiOutput("ui_climate_dates")
                           ,
-                          
+
                           #Climate variables annual
                           uiOutput("ui_climate_vars_annual")
                           ,
-                          
+
                           #Climate variables
                           uiOutput("ui_climate_vars_seasonal")
                           ,
-                          
+
                           #Climate variables
                           uiOutput("ui_climate_vars_monthly")
                           ,
-                          
+
                           #Soil variables
                           uiOutput("ui_soil_vars")
                           ,
-                          
+
                           #Soil depths
                           uiOutput("ui_soil_depths")
                           ,
-                          
+
                           #Visualize option
                           radioButtons("radio.env.visualize", label = ("Visualize Site Relationships"),
-                                       choices = list("No visualization" = 1, 
-                                                      "Soil only" = 2, 
+                                       choices = list("No visualization" = 1,
+                                                      "Soil only" = 2,
                                                       "Climate only" = 3,
-                                                      "Soil + Climate combined" = 4), 
+                                                      "Soil + Climate combined" = 4),
                                        selected = 1),
-                          
+
                           #submit parameters button
                           actionButton("goButton_environment", "Submit")
                           ,
                           #refresh button
                           actionButton('refresh_environment',"Refresh"),
-                          
+
                         ),
                         mainPanel(
-                          
+
                           fixedRow(
                             column(6,
                                    "",
@@ -237,7 +237,7 @@ ui<-fluidPage(
                                    plotOutput(outputId = "env_kernel_plot")
                             )
                           ),
-                          
+
                           fixedRow(
                             column(6,
                                    "",
@@ -252,144 +252,137 @@ ui<-fluidPage(
                                    #output$download_title_env
                                    uiOutput(outputId = "download_title_env"),
                                    uiOutput(outputId = "downloadData.environment")
-                                   
+
                             ),
-                            
+
                           )
                         )
                       )
              ),
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             navbarMenu("Data Visualization",
-                        tabPanel("Distributions",
-                                 titlePanel("Distributions"),
-                                 sidebarLayout(
-                                   sidebarPanel(
-                                     
-                                     selectInput("input_dist_species", "Species",
-                                                 c("White Spruce","Lodgepole Pine"), selected = "White Spruce"),
-                                     
-                                     # This outputs the dynamic UI1 component
-                                     uiOutput("ui_dist_1"),
-                                     
-                                     # This outputs the dynamic UI2 component
-                                     uiOutput("ui_dist_2"),
-                                     
-                                     uiOutput("ui_dist_3"),
-                                     
-                                     
-                                   ),
-                                   mainPanel(
-                                     
-                                     plotOutput(outputId = "main_plot_distributions")
-                                     
-                                   )
-                                 )
-                                 
-                        ),
-                        
-                        
-                        
-                        
-                        tabPanel("Trait-trait Relationships",
-                                 titlePanel("Trait-trait Relationships"),
-                                 # Sidebar layout with input and output definitions ----
-                                 sidebarLayout(
-                                   
-                                   # Sidebar panel for inputs ----
-                                   sidebarPanel(
-                                     
-                                     selectInput("input_type", "Species",
-                                                 c("White Spruce","Lodgepole Pine")
-                                     ),
-                                     # This outputs the dynamic UI1 component
-                                     uiOutput("ui1")
-                                     ,
-                                     # This outputs the dynamic UI2 component
-                                     uiOutput("ui2")
-                                   ),
-                                   
-                                   # Main panel for displaying outputs ----
-                                   mainPanel(
-                                     
-                                     plotOutput(outputId = "main_plot")
-                                   )
-                                 )
-                        ),
-                        
-                        tabPanel("Site-trait Relationships",
-                                 titlePanel("Site-trait Relationships"),
-                                 #Sidebar layout with input and output definitions ----
-                                 sidebarLayout(
-                                   
-                                   # Sidebar panel for inputs ----
-                                   sidebarPanel(
-                                     
-                                     selectInput("input_type7", "Species",
-                                                 c("Lodgepole Pine","White Spruce")#, selected = "Lodgepole Pine")
-                                     ),
-                                     # This outputs the dynamic UI1 component
-                                     uiOutput("ui8")
-                                     ,
-                                     # This outputs the dynamic UI1 component
-                                     uiOutput("ui9")
-                                   ),
-                                   
-                                   # Main panel for displaying outputs ----
-                                   mainPanel(
-                                     
-                                     plotOutput(outputId = "main_plot7")
-                                   )
-                                 )
-                        ),
-                        
-                        tabPanel("Scatterplot Zoom",
-                                 
-                                 titlePanel("Scatterplot Zoom"),
-                                 # Sidebar layout with input and output definitions ----
-                                 sidebarLayout(
-                                   
-                                   # Sidebar panel for inputs ----
-                                   sidebarPanel(
-                                     
-                                     selectInput("input_type3", "Species",
-                                                 c("White Spruce","Lodgepole Pine")
-                                     ),
-                                     # This outputs the dynamic UI component
-                                     uiOutput("ui6")
-                                     ,
-                                     # This outputs the dynamic UI component
-                                     uiOutput("ui7")
-                                     
-                                   ),
-                                   mainPanel(
-                                     
-                                     plotOutput(outputId = "main_plot2", 
-                                                click = "plot1_click",
-                                                brush = brushOpts(
-                                                  id = "plot1_brush"
-                                                )),
-                                     
-                                     h4("Points near click"),
-                                     verbatimTextOutput("click_info"),
-                                     
-                                     
-                                     h4("Brushed points"),
-                                     verbatimTextOutput("brush_info")
-                                     
-                                   )
-                                   
-                                 )
-                        )
-             ),
+             # 
+             # 
+             # navbarMenu("Data Visualization",
+             #            tabPanel("Distributions",
+             #                     titlePanel("Distributions"),
+             #                     sidebarLayout(
+             #                       sidebarPanel(
+             #                         
+             #                         selectInput("input_dist_species", "Species",
+             #                                     c("White Spruce","Lodgepole Pine"), selected = "White Spruce"),
+             #                         
+             #                         # This outputs the dynamic UI1 component
+             #                         uiOutput("ui_dist_1"),
+             #                         
+             #                         # This outputs the dynamic UI2 component
+             #                         uiOutput("ui_dist_2"),
+             #                         
+             #                         uiOutput("ui_dist_3"),
+             #                         
+             #                         
+             #                       ),
+             #                       mainPanel(
+             #                         
+             #                         plotOutput(outputId = "main_plot_distributions")
+             #                         
+             #                       )
+             #                     )
+             #                     
+             #            ),
+             #            
+             #            
+             #            
+             #            
+             #            tabPanel("Trait-trait Relationships",
+             #                     titlePanel("Trait-trait Relationships"),
+             #                     # Sidebar layout with input and output definitions ----
+             #                     sidebarLayout(
+             #                       
+             #                       # Sidebar panel for inputs ----
+             #                       sidebarPanel(
+             #                         
+             #                         selectInput("input_type", "Species",
+             #                                     c("White Spruce","Lodgepole Pine")
+             #                         ),
+             #                         # This outputs the dynamic UI1 component
+             #                         uiOutput("ui1")
+             #                         ,
+             #                         # This outputs the dynamic UI2 component
+             #                         uiOutput("ui2")
+             #                       ),
+             #                       
+             #                       # Main panel for displaying outputs ----
+             #                       mainPanel(
+             #                         
+             #                         plotOutput(outputId = "main_plot")
+             #                       )
+             #                     )
+             #            ),
+             #            
+             #            tabPanel("Site-trait Relationships",
+             #                     titlePanel("Site-trait Relationships"),
+             #                     #Sidebar layout with input and output definitions ----
+             #                     sidebarLayout(
+             #                       
+             #                       # Sidebar panel for inputs ----
+             #                       sidebarPanel(
+             #                         
+             #                         selectInput("input_type7", "Species",
+             #                                     c("Lodgepole Pine","White Spruce")#, selected = "Lodgepole Pine")
+             #                         ),
+             #                         # This outputs the dynamic UI1 component
+             #                         uiOutput("ui8")
+             #                         ,
+             #                         # This outputs the dynamic UI1 component
+             #                         uiOutput("ui9")
+             #                       ),
+             #                       
+             #                       # Main panel for displaying outputs ----
+             #                       mainPanel(
+             #                         
+             #                         plotOutput(outputId = "main_plot7")
+             #                       )
+             #                     )
+             #            ),
+             #            
+             #            tabPanel("Scatterplot Zoom",
+             #                     
+             #                     titlePanel("Scatterplot Zoom"),
+             #                     # Sidebar layout with input and output definitions ----
+             #                     sidebarLayout(
+             #                       
+             #                       # Sidebar panel for inputs ----
+             #                       sidebarPanel(
+             #                         
+             #                         selectInput("input_type3", "Species",
+             #                                     c("White Spruce","Lodgepole Pine")
+             #                         ),
+             #                         # This outputs the dynamic UI component
+             #                         uiOutput("ui6")
+             #                         ,
+             #                         # This outputs the dynamic UI component
+             #                         uiOutput("ui7")
+             #                         
+             #                       ),
+             #                       mainPanel(
+             #                         
+             #                         plotOutput(outputId = "main_plot2", 
+             #                                    click = "plot1_click",
+             #                                    brush = brushOpts(
+             #                                      id = "plot1_brush"
+             #                                    )),
+             #                         
+             #                         h4("Points near click"),
+             #                         verbatimTextOutput("click_info"),
+             #                         
+             #                         
+             #                         h4("Brushed points"),
+             #                         verbatimTextOutput("brush_info")
+             #                         
+             #                       )
+             #                       
+             #                     )
+             #            )
+             # ),
              
              #backwards selections placeholder
              tabPanel("Backwards Selections",
@@ -990,70 +983,70 @@ server<-function(input, output, session) {
   
   ##PANEL 2##
   
-  #environment checkbox trait-trait correlations panel 
-  output$ui1 <- renderUI({
-    if (is.null(input$input_type))
-      return()
-    
-    # Depending on input$input_type, we'll generate a different
-    # UI component and send it to the client.
-    switch(input$input_type,
-           "White Spruce" = checkboxGroupInput("dynamic1", "Sites",
-                                               choices = as.character(unique(spruce$Site)),
-                                               selected = ""),
-           
-           "Lodgepole Pine" = checkboxGroupInput("dynamic1", "Sites",
-                                                 choices = as.character(unique(pine$Site)),
-                                                 selected = "")
-    )
-  })
-  
-  #trait checkbox  trait-trait correlations panel 
-  output$ui2 <- renderUI({
-    if (is.null(input$input_type))
-      return()
-    
-    # Depending on input$input_type, we'll generate a different
-    # UI component and send it to the client.
-    switch(input$input_type,
-           "White Spruce" = checkboxGroupInput("dynamic2", "Traits",
-                                               choices = colnames(spruce)[c(spruce.phen.index,spruce.bv.index,spruce.A.bv.index,spruce.gen.gain.index,spruce.ped.gain.index)],
-                                               selected = ""),
-           
-           "Lodgepole Pine" = checkboxGroupInput("dynamic2", "Traits",
-                                                 choices = colnames(pine)[c(pine.phen.index,pine.bv.index,pine.A.bv.index,pine.gen.gain.index,pine.ped.gain.index)],
-                                                 selected = "")
-    )
-  })
-  
-  
-  
-  #main plot for trait-trait correlations
-  output$main_plot <- renderPlot({
-    if (is.null(input$input_type) | is.null(input$dynamic2) | length(input$dynamic2)<2 | is.null(input$dynamic1))
-      return()
-    
-    if (!is.null(input$input_type) | !is.null(input$dynamic2) | length(input$dynamic2)>1){
-      df_subset <- reactive({
-        
-        if(input$input_type=="White Spruce") data2 <- subset(pine, Site %in% input$dynamic1)
-        if(input$input_type=="Lodgepole Pine") data2 <- subset(pine, Site %in% input$dynamic1)
-        
-        return(data2)
-      })
-    }
-    
-    
-    switch(input$input_type,
-           
-           "Lodgepole Pine" = ggpairs(df_subset()[,input$dynamic2], aes(color = factor(df_subset()[,'Site']))),
-           
-           "White Spruce" =  ggpairs(df_subset()[,input$dynamic2], aes(color = factor(df_subset()[,'Site'])))
-    )
-    
-  })
-  
-  ####
+  # #environment checkbox trait-trait correlations panel 
+  # output$ui1 <- renderUI({
+  #   if (is.null(input$input_type))
+  #     return()
+  #   
+  #   # Depending on input$input_type, we'll generate a different
+  #   # UI component and send it to the client.
+  #   switch(input$input_type,
+  #          "White Spruce" = checkboxGroupInput("dynamic1", "Sites",
+  #                                              choices = as.character(unique(spruce$Site)),
+  #                                              selected = ""),
+  #          
+  #          "Lodgepole Pine" = checkboxGroupInput("dynamic1", "Sites",
+  #                                                choices = as.character(unique(pine$Site)),
+  #                                                selected = "")
+  #   )
+  # })
+  # 
+  # #trait checkbox  trait-trait correlations panel 
+  # output$ui2 <- renderUI({
+  #   if (is.null(input$input_type))
+  #     return()
+  #   
+  #   # Depending on input$input_type, we'll generate a different
+  #   # UI component and send it to the client.
+  #   switch(input$input_type,
+  #          "White Spruce" = checkboxGroupInput("dynamic2", "Traits",
+  #                                              choices = colnames(spruce)[c(spruce.phen.index,spruce.bv.index,spruce.A.bv.index,spruce.gen.gain.index,spruce.ped.gain.index)],
+  #                                              selected = ""),
+  #          
+  #          "Lodgepole Pine" = checkboxGroupInput("dynamic2", "Traits",
+  #                                                choices = colnames(pine)[c(pine.phen.index,pine.bv.index,pine.A.bv.index,pine.gen.gain.index,pine.ped.gain.index)],
+  #                                                selected = "")
+  #   )
+  # })
+  # 
+  # 
+  # 
+  # #main plot for trait-trait correlations
+  # output$main_plot <- renderPlot({
+  #   if (is.null(input$input_type) | is.null(input$dynamic2) | length(input$dynamic2)<2 | is.null(input$dynamic1))
+  #     return()
+  #   
+  #   if (!is.null(input$input_type) | !is.null(input$dynamic2) | length(input$dynamic2)>1){
+  #     df_subset <- reactive({
+  #       
+  #       if(input$input_type=="White Spruce") data2 <- subset(pine, Site %in% input$dynamic1)
+  #       if(input$input_type=="Lodgepole Pine") data2 <- subset(pine, Site %in% input$dynamic1)
+  #       
+  #       return(data2)
+  #     })
+  #   }
+  #   
+  #   
+  #   switch(input$input_type,
+  #          
+  #          "Lodgepole Pine" = ggpairs(df_subset()[,input$dynamic2], aes(color = factor(df_subset()[,'Site']))),
+  #          
+  #          "White Spruce" =  ggpairs(df_subset()[,input$dynamic2], aes(color = factor(df_subset()[,'Site'])))
+  #   )
+  #   
+  # })
+  # 
+  # ####
   
   ### PANEL 3 SITE-TRAIT RELATIONSHIPS ###
   
