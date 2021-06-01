@@ -1,3 +1,3 @@
-# RESFOR_Shiny App
+# RESFOR Selection Tool
 
-Selection tool
+Selection tool for genomic analyses.
