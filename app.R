@@ -56,8 +56,8 @@ pine<-readRDS('pine.final.RDS')
 
 pine$BV_G.C13b.s_gain<-pine$BV_G.C13b.s_gain*-1
 pine$BV_A.C13b.s_gain<-pine$BV_A.C13b.s_gain*-1
-pine$Hs8.BV_HT30_gain<-pine$Hs8.BV_HT30_gain+1
-pine$Hs8.BV_DBH30_gain<-pine$Hs8.BV_DBH30_gain+1
+#pine$Hs8.BV_HT30_gain<-pine$Hs8.BV_HT30_gain+1
+#pine$Hs8.BV_DBH30_gain<-pine$Hs8.BV_DBH30_gain+1
 
 pine$Site<-factor(pine$Site)
 pine$ID<-as.character(pine$ID)
