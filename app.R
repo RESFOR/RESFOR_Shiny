@@ -643,7 +643,7 @@ ui<-fluidPage(
                                  HTML('<br>'),
                                  
                                  h4('WGR36'),
-                                 p('Normalized western gall rust rank. Larger values indicate increased infection.'),
+                                 p('Normalized western gall rust ranks as a continuous trait. Larger values indicate increased infection and negative values suggest minor or no gall rust.'),
                                  HTML('<br>'),
                                  
                                  h4('MPB_rank_resistant'),
